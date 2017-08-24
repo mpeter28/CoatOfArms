@@ -60,6 +60,26 @@ var orleSvg = function(ordinaryColor) {
     return "<rect width=\"256\" height=\"320\" fill=\"none\" stroke-width=\"64\" stroke=\"" + ordinaryColor + "\" />";
 }
 
+var quarterCoats = function(coatOneSvg, coatTwoSvg) {
+    return "<g transform=\"scale(0.5)\">" + coatOneSvg + "</g><g transform=\"translate(128,0) scale(0.5)\">" + coatTwoSvg + "</g><g transform=\"translate(0,160) scale(0.5)\">" + coatTwoSvg + "</g><g transform=\"translate(128,160) scale(0.5)\">" + coatOneSvg + "</g>";
+}
+
+var cantonCoats = function(coatOneSvg, coatTwoSvg) {
+    return coatOneSvg + "<g transform=\"scale(0.5)\">" + coatTwoSvg + "</g>";
+}
+
+var inescutcheonCoats = function(coatOneSvg, coatTwoSvg) {
+    return coatOneSvg + "<g transform=\"translate(64,80) scale(0.5)\">" + coatTwoSvg + "</g>";
+}
+
+var impaleCoats = function(coatOneSvg, coatTwoSvg) {
+    return "<g transform=\"scale(0.5,1)\">" + coatOneSvg + "</g><g transform=\"translate(128,0) scale(0.5,1)\">" + coatTwoSvg + "</g>";
+}
+
+var dimidateCoats = function(coatOneSvg, coatTwoSvg) {
+    return coatOneSvg + "<svg x=\"128\" y=\"0\" width=\"128\" height=\"320\" viewBox=\"128 0 128 320\" preserveAspectRatio=\"none\">" + coatTwoSvg + "</svg>";
+}
+
 // Data and Configuration
 
 var coats = [
@@ -152,51 +172,67 @@ var fieldDivisions = [
 var ordinaries = [
   {
     coatName: "Pale",
-    svg: paleSvg("red"),
+    svg: paleSvg("green"),
     onClick: ""
   },
   {
     coatName: "Fess",
-    svg: fessSvg("red"),
+    svg: fessSvg("green"),
     onClick: ""
   },
   {
     coatName: "Bend",
-    svg: bendSvg("red"),
+    svg: bendSvg("green"),
     onClick: ""
   },
   {
     coatName: "Bend Sinister",
-    svg: bendSinisterSvg("red"),
+    svg: bendSinisterSvg("green"),
     onClick: ""
   },
   {
     coatName: "Saltire",
-    svg: saltireSvg("red"),
+    svg: saltireSvg("green"),
     onClick: ""
   },
   {
     coatName: "Cross",
-    svg: crossSvg("red"),
+    svg: crossSvg("green"),
     onClick: ""
   },
   {
     coatName: "Chevron",
-    svg: chevronSvg("red"),
+    svg: chevronSvg("green"),
     onClick: ""
   },
   {
     coatName: "Orle",
-    svg: orleSvg("red"),
+    svg: orleSvg("green"),
     onClick: ""
   },
 ];
 
 var marshaling = [
   {
-    svg: "",
+    coatName: "Quartering",
+    svg: quarterCoats(solidFieldSvg("yellow") + saltireSvg("red"), solidFieldSvg("yellow") + crossSvg("red")),
     onClick: ""
   },
+  {
+    coatName: "Canton Coats",
+    svg: cantonCoats(solidFieldSvg("yellow") + saltireSvg("red"), solidFieldSvg("yellow") + crossSvg("red")),
+    onClick: ""
+  },
+  {
+    coatName: "Inescutcheon",
+    svg: inescutcheonCoats(solidFieldSvg("yellow") + saltireSvg("red"), solidFieldSvg("yellow") + crossSvg("red")),
+    onClick: ""
+  },
+  {
+    coatName: "Impale",
+    svg: impaleCoats(solidFieldSvg("yellow") + saltireSvg("red"), solidFieldSvg("yellow") + crossSvg("red")),
+    onClick: ""
+  }
 ];
 
 var primaryCoatIndex = 1;
@@ -295,13 +331,13 @@ d3.select("#field-division").selectAll("svg")
   });
 
 d3.select("#marshaling").selectAll("svg")
-  .data(colorSelect)
+  .data(marshaling)
   .enter()
   .append("svg")
   .attr("width", "64px")
   .attr("height", "80px")
   .html(function(d) {
-    return d.svg;
+    return "<g transform=\"scale(0.25)\">" + d.svg + "</g>";
   });
 
 drawPrimaryCoat();
