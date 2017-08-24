@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Feudal Flags</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sandstone.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/d3.v3.js"></script>
+  <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Portfolio</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid bg-3 text-center" id="wrapper"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="page-header">
+        <h2>Tool Bar</h2>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Color Select</h3>
+        </div>
+        <div class="panel-body">
+          <p id="primary-color-select">
+          </p>
+          <p id="secondary-color-select">
+          </p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Field Division</h3>
+        </div>
+        <div class="panel-body">
+          <p id="field-division">
+          </p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Ordinaries</h3>
+        </div>
+        <div class="panel-body">
+          <p id="ordinaries">
+          </p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Marshaling</h3>
+        </div>
+        <div class="panel-body">
+          <p id="marshaling">
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6" id="primary-coat" >
+        </div>
+        <div class="col-xs-12 col-sm-6" id="secondary-coat" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-header">
+            <h2>All Coats</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="all-coats-row">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/coa.js"></script>
+
+</body>
+</html>
