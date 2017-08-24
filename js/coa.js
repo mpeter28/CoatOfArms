@@ -28,6 +28,38 @@ var gyronnySvg = function(primaryColor, secondaryColor) {
     return "<rect width=\"256\" height=\"320\" fill=\"" + primaryColor + "\" /><polygon points=\"0,0 128,160 128,0\" style=\"fill:" + secondaryColor + ";stroke-width:0\" /><polygon points=\"256,320 128,160 128,320\" style=\"fill:" + secondaryColor + ";stroke-width:0\" /><polygon points=\"256,0 128,160 256,160\" style=\"fill:" + secondaryColor + ";stroke-width:0\" /><polygon points=\"0,320 128,160 0,160\" style=\"fill:" + secondaryColor + ";stroke-width:0\" />";
 }
 
+var paleSvg = function(ordinaryColor) {
+    return "<line x1=\"0\" y1=\"160\" x2=\"256\" y2=\"160\" stroke-width=\"100\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var fessSvg = function(ordinaryColor) {
+    return "<line x1=\"128\" y1=\"0\" x2=\"128\" y2=\"320\" stroke-width=\"80\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var bendSvg = function(ordinaryColor) {
+    return "<line x1=\"0\" y1=\"0\" x2=\"256\" y2=\"320\" stroke-width=\"80\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var bendSinisterSvg = function(ordinaryColor) {
+    return "<line x1=\"256\" y1=\"0\" x2=\"0\" y2=\"320\" stroke-width=\"80\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var saltireSvg = function(ordinaryColor) {
+    return "<line x1=\"256\" y1=\"0\" x2=\"0\" y2=\"320\" stroke-width=\"40\" stroke=\"" + ordinaryColor + "\" /><line x1=\"0\" y1=\"0\" x2=\"256\" y2=\"320\" stroke-width=\"40\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var crossSvg = function(ordinaryColor) {
+    return "<line x1=\"0\" y1=\"160\" x2=\"256\" y2=\"160\" stroke-width=\"40\" stroke=\"" + ordinaryColor + "\" /><line x1=\"128\" y1=\"0\" x2=\"128\" y2=\"320\" stroke-width=\"40\" stroke=\"" + ordinaryColor + "\" />";
+}
+
+var chevronSvg = function(ordinaryColor) {
+    return "<polygon points=\"0,320 128,160 256,320 230,320 128,190 26,320\" style=\"fill:" + ordinaryColor + ";stroke-width:0\" />";
+}
+
+var orleSvg = function(ordinaryColor) {
+    return "<rect width=\"256\" height=\"320\" fill=\"none\" stroke-width=\"64\" stroke=\"" + ordinaryColor + "\" />";
+}
+
 // Data and Configuration
 
 var coats = [
@@ -119,7 +151,43 @@ var fieldDivisions = [
 
 var ordinaries = [
   {
-    svg: "",
+    coatName: "Pale",
+    svg: paleSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Fess",
+    svg: fessSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Bend",
+    svg: bendSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Bend Sinister",
+    svg: bendSinisterSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Saltire",
+    svg: saltireSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Cross",
+    svg: crossSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Chevron",
+    svg: chevronSvg("red"),
+    onClick: ""
+  },
+  {
+    coatName: "Orle",
+    svg: orleSvg("red"),
     onClick: ""
   },
 ];
@@ -207,13 +275,13 @@ d3.select("#secondary-color-select").selectAll("svg")
   });
 
 d3.select("#ordinaries").selectAll("svg")
-  .data(colorSelect)
+  .data(ordinaries)
   .enter()
   .append("svg")
   .attr("width", "64px")
   .attr("height", "80px")
   .html(function(d) {
-    return d.svg;
+    return "<g transform=\"scale(0.25)\">" + d.svg + "</g>";
   });
 
 d3.select("#field-division").selectAll("svg")
